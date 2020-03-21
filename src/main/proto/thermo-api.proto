@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.yamalc.ytmp.grpc.thermo";
+option java_outer_classname = "ThermoService";
+option objc_class_prefix = "SPT";
+
+package thermo;
+
+service Thermo {
+    rpc LatestBodyTemperature (UserIdRequest) returns (BodyTemperatureResponse) {}
+    rpc LatestHealthCheck (UserIdRequest) returns (BodyTemperatureResponse) {}
+    rpc RecentlyHealthCheck (UserIdRequest) returns (BodyTemperatureResponse) {}
+    rpc NormalBodyTemperature (UserIdRequest) returns (BodyTemperatureResponse) {}
+}
+
+message UserIdRequest {
+    string id = 1;
+}
+
+message BodyTemperatureResponse {
+    string id = 1;
+    double bodyTemperature = 2;
+}
