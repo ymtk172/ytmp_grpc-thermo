@@ -31,7 +31,7 @@ public class ThermoApiClient {
         return simpleClient;
     }
 
-    public void getLatestThermoInfo(String id) {
+    public double getLatestThermoInfo(String id) {
         UserIdRequest request =
                 UserIdRequest
                         .newBuilder()
@@ -42,14 +42,17 @@ public class ThermoApiClient {
             BodyTemperatureResponse response = blockingStub.latestBodyTemperature(request);
 
             logger.info(String.format("response: result = %f", response.getBodyTemperature()));
+
+            return response.getBodyTemperature();
         } catch (StatusRuntimeException e) {
             Status status = Status.fromThrowable(e);
             logger.info("error: status code = " + status.getCode() + ", description = " + status.getDescription());
             e.printStackTrace();
+            throw e;
         }
     }
 
-    public void getLatestHealthCheck(String id) {
+    public double getLatestHealthCheck(String id) {
         UserIdRequest request =
                 UserIdRequest
                         .newBuilder()
@@ -60,14 +63,17 @@ public class ThermoApiClient {
             BodyTemperatureResponse response = blockingStub.latestHealthCheck(request);
 
             logger.info(String.format("response: result = %f", response.getBodyTemperature()));
+
+            return response.getBodyTemperature();
         } catch (StatusRuntimeException e) {
             Status status = Status.fromThrowable(e);
             logger.info("error: status code = " + status.getCode() + ", description = " + status.getDescription());
             e.printStackTrace();
+            throw e;
         }
     }
 
-    public void getRecentlyHealthCheck(String id) {
+    public double getRecentlyHealthCheck(String id) {
         UserIdRequest request =
                 UserIdRequest
                         .newBuilder()
@@ -78,14 +84,17 @@ public class ThermoApiClient {
             BodyTemperatureResponse response = blockingStub.recentlyHealthCheck(request);
 
             logger.info(String.format("response: result = %f", response.getBodyTemperature()));
+
+            return response.getBodyTemperature();
         } catch (StatusRuntimeException e) {
             Status status = Status.fromThrowable(e);
             logger.info("error: status code = " + status.getCode() + ", description = " + status.getDescription());
             e.printStackTrace();
+            throw e;
         }
     }
 
-    public void getNormalBodyTemperature(String id) {
+    public double getNormalBodyTemperature(String id) {
         UserIdRequest request =
                 UserIdRequest
                         .newBuilder()
@@ -96,10 +105,13 @@ public class ThermoApiClient {
             BodyTemperatureResponse response = blockingStub.normalBodyTemperature(request);
 
             logger.info(String.format("response: result = %f", response.getBodyTemperature()));
+
+            return response.getBodyTemperature();
         } catch (StatusRuntimeException e) {
             Status status = Status.fromThrowable(e);
             logger.info("error: status code = " + status.getCode() + ", description = " + status.getDescription());
             e.printStackTrace();
+            throw e;
         }
     }
 
