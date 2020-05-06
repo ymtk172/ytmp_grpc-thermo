@@ -20,5 +20,5 @@ message UserIdRequest {
 
 message BodyTemperatureResponse {
     string id = 1;
-    double bodyTemperature = 2;
+    float bodyTemperature = 2;
 }
