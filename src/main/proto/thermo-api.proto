@@ -7,6 +7,12 @@ option objc_class_prefix = "SPT";
 
 package thermo;
 
+enum ResultType {
+    SUCCESS = 0;
+    FAILURE = 1;
+    NOT_EXISTS = 2;
+}
+
 service Thermo {
     rpc LatestBodyTemperature (UserIdRequest) returns (BodyTemperatureResponse) {}
     rpc LatestHealthCheck (UserIdRequest) returns (BodyTemperatureResponse) {}
@@ -15,10 +21,12 @@ service Thermo {
 }
 
 message UserIdRequest {
-    string id = 1;
+    ResultType result = 1;
+    string id = 2;
 }
 
 message BodyTemperatureResponse {
-    string id = 1;
-    float bodyTemperature = 2;
+    ResultType result = 1;
+    string id = 2;
+    float bodyTemperature = 3;
 }
