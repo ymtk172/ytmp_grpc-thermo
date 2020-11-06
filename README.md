@@ -1,11 +1,7 @@
 # How to use
 Generate class files.
 ```
-./mvnw generate-sources
-```
-Install this package to `~/.m2/repository/` .
-```
-./mvnw clean compile install
+./gradlew compileKotlin
 ```
 Write below on the other POM to use this package.
 ```
