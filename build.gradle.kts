@@ -51,6 +51,7 @@ protobuf {
 			artifact = "io.grpc:protoc-gen-grpc-java:1.25.0"
 		}
 	}
+	// generate build/generated/source/proto/main/grpc/${package_path}/ThermoGrpc
 	generateProtoTasks {
 		val protoConfig = file("protoConfig.asciipb")
 		all().forEach {
@@ -63,13 +64,12 @@ protobuf {
 	sourceSets {
 		main {
 			java {
-				srcDir("$buildDir/generated/source/proto/main/grpc")
+				srcDir("$buildDir/generated/source/proto/main/java")
 				srcDir("$buildDir/generated/source/proto/main/grpc")
 			}
 		}
 	}
 }
-
 
 tasks.withType<Test> {
 	useJUnitPlatform()
